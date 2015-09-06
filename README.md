@@ -141,11 +141,10 @@ APT::Periodic::AutocleanInterval "7";`
 10. Create the wsgi file to launch the application:
   1. `sudo mkdir /var/www/catalog`
   2. `sudo nano /var/www/catalog/catalog.wsgi`
-  3. Insert the following lines (remember, INDENTATION COUNTS!): `
-  import sys
-  sys.path.insert(0, "/catalog/fullstack-nanodegree-vm/vagrant/catalog")
-  from project import app as application
-  application.secret_key = 'ultra_secret_key'`
+  3. Insert the following lines (remember, INDENTATION COUNTS!): `import sys
+sys.path.insert(0, "/catalog/fullstack-nanodegree-vm/vagrant/catalog")
+from project import app as application
+application.secret_key = 'ultra_secret_key'`
 11. Create the apache webserver configuration file:
   1. `sudo nano /etc/apache2/sites-enabled/000-default.conf`
   2. Delete the entire contents
