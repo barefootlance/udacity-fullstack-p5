@@ -12,6 +12,8 @@ where the `grader.rsa` file is the file that contains the private key for the gr
 * http://ec2-52-88-149-231.us-west-2.compute.amazonaws.com
 This was obtained by entering the ip address (in SSH above) into [this website](http://www.hcidata.info/host2ip.cgi).
 
+NOTE: the Amazon login does not succeed because this is not an SSL site.
+
 # Configuration Changes
 The following are the (hopefully) reproducible steps to set up the server. The steps are grouped together by the rows in the rubric, and the instructions associated with each row are listed, along with the steps to implement each piece of the instructions and rubric.
 
