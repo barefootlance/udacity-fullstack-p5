@@ -65,24 +65,20 @@ The following are the (hopefully) reproducible steps to set up the server. The s
 2. Add daily unattended package updates [Source](https://www.howtoforge.com/how-to-configure-automatic-updates-on-debian-wheezy):
   1. `apt-get install unattended-upgrades`
   2. `sudo nano /etc/apt/apt.conf.d/50unattended-upgrades` and un-comment the line `"${distro_id}:${distro_codename}-updates";` so that updates are automagically installed. (Note: the `security` line should already be un-commented, but if it's not, un-comment that as well.)
-  3. `sudo nano /etc/apt/apt.conf.d/02periodic` and add the following lines: `
-// Enable the update/upgrade script (0=disable)
-APT::Periodic::Enable "1";
-
-// Do "apt-get update" automatically every n-days (0=disable)
-APT::Periodic::Update-Package-Lists "1";
-
-// Do "apt-get upgrade --download-only" every n-days (0=disable)
-APT::Periodic::Download-Upgradeable-Packages "1";
-
-// Run the "unattended-upgrade" security upgrade script
-// every n-days (0=disabled)
-// Requires the package "unattended-upgrades" and will write
-// a log in /var/log/unattended-upgrades
-APT::Periodic::Unattended-Upgrade "1";
-
-// Do "apt-get autoclean" every n-days (0=disable)
-APT::Periodic::AutocleanInterval "7";`
+  3. `sudo nano /etc/apt/apt.conf.d/02periodic` and add the following lines: 
+<br>`// Enable the update/upgrade script (0=disable)`
+<br>`APT::Periodic::Enable "1";`
+<br>`// Do "apt-get update" automatically every n-days (0=disable)`
+<br>`APT::Periodic::Update-Package-Lists "1";`
+<br>`// Do "apt-get upgrade --download-only" every n-days (0=disable)`
+<br>`APT::Periodic::Download-Upgradeable-Packages "1";`
+<br>`// Run the "unattended-upgrade" security upgrade script`
+<br>`// every n-days (0=disabled)`
+<br>`// Requires the package "unattended-upgrades" and will write`
+<br>`// a log in /var/log/unattended-upgrades`
+<br>`APT::Periodic::Unattended-Upgrade "1";`
+<br>`// Do "apt-get autoclean" every n-days (0=disable)`
+<br>`APT::Periodic::AutocleanInterval "7";`
 3. Change the SSH port from 22 to 2200:
   1. `sudo nano /etc/ssh/sshd_config`
   2. Change `Port 22` to `Port 2200`
