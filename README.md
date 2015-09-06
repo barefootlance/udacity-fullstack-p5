@@ -141,25 +141,27 @@ APT::Periodic::AutocleanInterval "7";`
 10. Create the wsgi file to launch the application:
   1. `sudo mkdir /var/www/catalog`
   2. `sudo nano /var/www/catalog/catalog.wsgi`
-  3. Insert the following lines (remember, INDENTATION COUNTS!): `import sys
-sys.path.insert(0, "/catalog/fullstack-nanodegree-vm/vagrant/catalog")
-from project import app as application
-application.secret_key = 'ultra_secret_key'`
+  3. Insert the following lines (remember, INDENTATION COUNTS!):
+<br>`import sys`
+<br>`sys.path.insert(0, "/catalog/fullstack-nanodegree-vm/vagrant/catalog")`
+<br>`from project import app as application`
+<br>`application.secret_key = 'ultra_secret_key'`
 11. Create the apache webserver configuration file:
   1. `sudo nano /etc/apache2/sites-enabled/000-default.conf`
   2. Delete the entire contents
-  3. Paste in the following lines: `<VirtualHost *:80>
-  WSGIDaemonProcess catalog
-  WSGIScriptAlias / /var/www/catalog/catalog.wsgi
-  ErrorLog ${APACHE_LOG_DIR}/error_catalog.log
-  CustomLog ${APACHE_LOG_DIR}/access_catalog.log combined
-  DocumentRoot /catalog/fullstack-nanodegree-vm/vagrant/catalog
-  <Directory /var/www/catalog/>
-    WSGIProcessGroup catalog
-    WSGIApplicationGroup %{GLOBAL}
-    Order allow,deny
-    Allow from all
-  </Directory>
-  ServerAlias ec2-52-88-149-231.us-west-2.compute.amazonaws.com
-</VirtualHost>`
+  3. Paste in the following lines:
+<br>`<VirtualHost *:80>`
+<br>`  WSGIDaemonProcess catalog`
+<br>`  WSGIScriptAlias / /var/www/catalog/catalog.wsgi`
+<br>`  ErrorLog ${APACHE_LOG_DIR}/error_catalog.log`
+<br>`  CustomLog ${APACHE_LOG_DIR}/access_catalog.log combined`
+<br>`  DocumentRoot /catalog/fullstack-nanodegree-vm/vagrant/catalog`
+<br>`  <Directory /var/www/catalog/>`
+<br>`    WSGIProcessGroup catalog`
+<br>`    WSGIApplicationGroup %{GLOBAL}`
+<br>`    Order allow,deny`
+<br>`    Allow from all`
+<br>`  </Directory>`
+<br>`  ServerAlias ec2-52-88-149-231.us-west-2.compute.amazonaws.com`
+<br>`</VirtualHost>`
   4. `sudo apache2ctl restart`
